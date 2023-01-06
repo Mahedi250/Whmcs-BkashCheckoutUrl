@@ -503,7 +503,7 @@ if (!(new \WHMCS\ClientArea())->isLoggedIn()) {
 }
 
 $bKashCheckout = bkashcheckoutUrl::init();
-$bKashCheckout->$invoiceID = $_SESSION["id"];
+
 
 
 if (!$bKashCheckout->isActive) {
