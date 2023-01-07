@@ -273,7 +273,7 @@ class bkashcheckoutUrl
 
         $fields   = [
             'mode'                => '0011',
-            'payerReference'      => '01877722345',
+            'payerReference'      => ' ',
             'callbackURL'         => $this->callbackurl . "?" . "invoiceid=" . $this->invoice['invoiceid'],
             'amount'                => $this->total,
             'currency'              => 'BDT',
