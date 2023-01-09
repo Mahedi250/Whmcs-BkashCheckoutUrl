@@ -7,5 +7,6 @@ bKash Merchant Checkout module allow you to integrate payment solutions with the
 
 ```
  modules/gateways/
-  |- callback/bkashcheckout.php
-  |  b
+  |- callback/bkashcheckoutUrl.php
+  |- bkashcheckoutUrl.php
+```
