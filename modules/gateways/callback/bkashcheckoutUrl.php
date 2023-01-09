@@ -294,10 +294,11 @@ class bkashcheckoutUrl
         ];
         $context  = stream_context_create($context);
         $url      = $this->baseUrl . 'checkout/create';
-        $response = file_get_contents($url, true, $context);
-
-        if (is_array($response)) {
-             $this->redirect(json_decode($response)->bkashURL);
+        $response = file_get_contents($url,false, $context);
+        $data     = json_decode($response, true);
+        
+       if (is_array($data)) {
+             $this->redirect($data['bkashURL']);
         }
 
         return [
