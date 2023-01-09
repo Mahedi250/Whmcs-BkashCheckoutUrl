@@ -296,7 +296,16 @@ class bkashcheckoutUrl
         $url      = $this->baseUrl . 'checkout/create';
         $response = file_get_contents($url, true, $context);
 
-        $this->redirect(json_decode($response)->bkashURL);
+        if (is_array($response)) {
+             $this->redirect(json_decode($response)->bkashURL);
+        }
+
+        return [
+            'status'    => 'error',
+            'message'   => 'Invalid response from bKash API.',
+            'errorCode' => 'irs',
+        ];
+
     }
 
     /**
@@ -532,7 +541,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     invoiceRespone($invoiceID, "fail", "");
                 }
                 $response = $bKashCheckout->createPayment();
-                break;
+                
+                 if(is_array($response) && isset($response['status'])){
+                    
+                    invoiceRespone($invoiceID, "fail",$response['errorCode']);
+                     break;
+                    
+                }
+              
         }
     }
     // …
