@@ -534,6 +534,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
         exit;
     } else {
+        $_SESSION['hash']=null;
         global $CONFIG;
         $invoiceID = $_POST['invoiceid'];
         switch (isset($_POST['action'])) {
