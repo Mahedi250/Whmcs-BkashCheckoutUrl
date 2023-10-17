@@ -255,7 +255,7 @@ function refund_interpret($status, $rawdata = "", $transid = null)
 function checkoutUrl($params)
 {
     $apiUrl = $params['systemurl'] . 'modules/gateways/callback/' . $params['paymentmethod'] . '.php';
-    $bkashLogo = 'https://scripts.pay.bka.sh/resources/img/bkash_payment.png';
+    $bkashLogo = 'https://sajjadhossain.pages.dev/img/paywithbkash.svg';
     $_SESSION['hash'] = md5(uniqid(mt_rand(), true));
     $token = $_SESSION['hash'];
 
@@ -303,7 +303,7 @@ function Bkash_refund($params, $txrID, $paymentID, $amount, $baseUrl)
     $appSecret = $params['appSecret'];
     $username = $params['username'];
     $password = $params['password'];
-    $token = getToken($appKey, $appSecret, $username, $password, $baseUrl);
+    $token = getToken($appKey, $appSecret, $username,html_entity_decode($password), $baseUrl);
 
     $body_data = array(
         'paymentID' => $paymentID,
